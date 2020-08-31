@@ -27,9 +27,7 @@
   </p>
   <div>
     <button (click)="buttonGenerate()">Generate!</button>
-    <a [href]="imageUrl" download>
-      <button *ngIf="isGenerated">Download</button>
-    </a>
+    <button *ngIf="isGenerated" (click)="downloadQrCode()">Download</button>
     {{ message }}
   </div>
   <p>
