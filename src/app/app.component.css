@@ -1,0 +1,38 @@
+.hintergrund {
+  position: relative;
+  left: 50px;
+  top: 50px;
+  width: 350px;
+  height: 240px;
+  border: 1px black solid;
+  padding: 20px;
+}
+.downloadButton {
+  position: relative;
+  top: -11px;
+  right: 70px;
+}
+.felder {
+  width: 14%;
+  float: left;
+  font-size: 107%;
+  position: relative;
+  left: 0px;
+}
+
+.eingabeFelder {
+  float: right;
+  width: 86%;
+  position: relative;
+  left: 100px;
+}
+.QRCode {
+  position: fixed;
+  left: 500px;
+  top: 56px;
+}
+.generateButton {
+  position: relative;
+  right: 150px;
+  top: 10px;
+}

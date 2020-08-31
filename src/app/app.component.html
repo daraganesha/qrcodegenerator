@@ -1,40 +1,42 @@
-<div>
-  <p>
-    Size :
-    <input type="text" maxlength="4" size="4" [(ngModel)]="size" />
-  </p>
-  <p>
-    Text :
-    <input type="text" [(ngModel)]="text" />
-  </p>
-  <p>
-    Format :
-    <select [(ngModel)]="format">
-      <option value="jpeg">JPEG</option>
-      <option value="png">PNG</option>
-      <option value="gif">GIF</option>
-      <option value="svg">SVG</option>
-    </select>
-  </p>
-
-  <p>
-    Backgroundcolor :
-    <input type="text" [(ngModel)]="bgcolor" />
-  </p>
-  <p>
-    Color :
-    <input type="text" [(ngModel)]="color" />
-  </p>
-  <div>
-    <button (click)="buttonGenerate()">Generate!</button>
-    <a [href]="imageUrl" download>
-      <button *ngIf="isGenerated">Download</button>
-    </a>
-    {{ message }}
+<div class="hintergrund">
+  <div class="felder">
+    <p>Size :</p>
+    <p>Text :</p>
+    <p>Format:</p>
+    <p>Backgroundcolor:</p>
+    <p>Color:</p>
   </div>
-  <p>
+  <div class="eingabeFelder">
+    <p>
+      <input type="text" maxlength="4" size="4" [(ngModel)]="size" />
+    </p>
+    <p>
+      <input type="text" value="" [(ngModel)]="text" />
+    </p>
+    <p>
+      <button (click)="setFormat('jpeg')">JPEG</button>
+      <button (click)="setFormat('png')">PNG</button>
+      <button (click)="setFormat('gif')">GIF</button>
+      <button (click)="setFormat('svg')">SVG</button>
+    </p>
+    <p>
+      <input type="text" [(ngModel)]="bgcolor" />
+    </p>
+    <p>
+      <input type="text" [(ngModel)]="color" />
+    </p>
+    <div class="generateButton">
+      <button (click)="buttonGenerate()">Generate!</button>
+      {{ message }}
+    </div>
+    <div class="downloadButton">
+      <button *ngIf="isGenerated" (click)="downloadQRCode()">Download</button>
+    </div>
+  </div>
+
+  <div class="QRCode">
     <img [src]="imageUrl" />
-  </p>
+  </div>
 
   <p></p>
 </div>

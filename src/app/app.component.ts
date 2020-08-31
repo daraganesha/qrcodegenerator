@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,11 @@ export class AppComponent {
   color: string = '';
   isGenerated: boolean = false;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  setFormat(f: string) {
+    this.format = f;
+  }
 
   buttonGenerate() {
     if (this.text === '') {
@@ -41,5 +46,14 @@ export class AppComponent {
       this.message = '';
       this.isGenerated = true;
     }
+  }
+  downloadQRCode() {
+    this.http.get(this.imageUrl, { responseType: 'blob' }).subscribe((data) => {
+      const downloadURL = window.URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = 'creativeFileName.' + this.format;
+      link.click();
+    });
   }
 }
