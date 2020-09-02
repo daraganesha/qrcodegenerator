@@ -1,38 +1,49 @@
-.hintergrund {
+.header {
+  color: gray;
   position: relative;
-  left: 50px;
-  top: 50px;
-  width: 350px;
-  height: 240px;
-  border: 1px black solid;
-  padding: 20px;
+  top: 43px;
+  left: 47px;
 }
-.downloadButton {
-  position: relative;
-  top: -11px;
-  right: 70px;
+.container {
+  border: 1px solid gray;
+  max-width: 450px;
+  margin: 45px;
 }
-.felder {
-  width: 14%;
-  float: left;
-  font-size: 107%;
-  position: relative;
-  left: 0px;
+.row {
+  display: flex;
+  max-width: 400px;
+  margin: 5px;
+  padding: 10px;
 }
-
-.eingabeFelder {
-  float: right;
-  width: 86%;
-  position: relative;
-  left: 100px;
+.col {
+  width: 80%;
+}
+.errorMessage {
+  border: 1px solid gray;
+  background-color: lightgray;
+  padding: 10px;
+  margin-top: 15px;
+  width: 135px;
+  margin: 45px;
+}
+.message {
+  border: 1px solid gray;
+  width: 280px;
+  margin-left: 44px;
+  padding: 10px;
+  background-color: lightgray;
 }
 .QRCode {
   position: fixed;
-  left: 500px;
-  top: 56px;
+  left: 550px;
+  top: 90px;
 }
-.generateButton {
-  position: relative;
-  right: 150px;
-  top: 10px;
+
+.buttonClicked {
+  background-color: lightgray;
+  margin: 2px;
+}
+
+.button {
+  margin: 2px;
 }

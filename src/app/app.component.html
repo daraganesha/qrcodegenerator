@@ -1,42 +1,150 @@
-<div class="hintergrund">
-  <div class="felder">
-    <p>Size :</p>
-    <p>Text :</p>
-    <p>Format:</p>
-    <p>Backgroundcolor:</p>
-    <p>Color:</p>
-  </div>
-  <div class="eingabeFelder">
-    <p>
-      <input type="text" maxlength="4" size="4" [(ngModel)]="size" />
-    </p>
-    <p>
-      <input type="text" value="" [(ngModel)]="text" />
-    </p>
-    <p>
-      <button (click)="setFormat('jpeg')">JPEG</button>
-      <button (click)="setFormat('png')">PNG</button>
-      <button (click)="setFormat('gif')">GIF</button>
-      <button (click)="setFormat('svg')">SVG</button>
-    </p>
-    <p>
-      <input type="text" [(ngModel)]="bgcolor" />
-    </p>
-    <p>
-      <input type="text" [(ngModel)]="color" />
-    </p>
-    <div class="generateButton">
-      <button (click)="buttonGenerate()">Generate!</button>
-      {{ message }}
-    </div>
-    <div class="downloadButton">
-      <button *ngIf="isGenerated" (click)="downloadQRCode()">Download</button>
+<div class="header"><h2>QR Code Generator</h2></div>
+<div class="container">
+  <div class="row">
+    <div class="col"><label for="text">Text:</label></div>
+    <div class="col">
+      <input
+        type="text"
+        id="text"
+        size="26"
+        placeholder="Enter your text here"
+        [(ngModel)]="text"
+      />
     </div>
   </div>
 
-  <div class="QRCode">
-    <img [src]="imageUrl" />
+  <div class="row">
+    <div class="col">
+      <label for="size">Size:</label>
+    </div>
+    <div class="col">
+      <button
+        [class]="{
+          buttonClicked: this.sizeAsText === '50',
+          button: true
+        }"
+        (click)="setSize('50')"
+      >
+        50px
+      </button>
+      <button
+        [class]="{
+          buttonClicked: this.sizeAsText === '100',
+          button: true
+        }"
+        (click)="setSize('100')"
+      >
+        100px
+      </button>
+      <button
+        [class]="{
+          buttonClicked: this.sizeAsText === '300',
+          button: true
+        }"
+        (click)="setSize('300')"
+      >
+        300px
+      </button>
+      <button
+        [class]="{
+          buttonClicked: this.sizeAsText === '500',
+          button: true
+        }"
+        (click)="setSize('500')"
+      >
+        500px
+      </button>
+      <button
+        [class]="{
+          buttonClicked: this.sizeAsText === '1000',
+          button: true
+        }"
+        (click)="setSize('1000')"
+      >
+        1000px
+      </button>
+      <input
+        type="text"
+        id="size"
+        placeholder="Customized size"
+        size="15"
+        [(ngModel)]="sizeAsText"
+      />
+    </div>
   </div>
-
-  <p></p>
+  <div class="row">
+    <div class="col">
+      <label for="bgcolor">Background-color:</label>
+    </div>
+    <div class="col">
+      <input type="color" id="bgcolor" [(ngModel)]="bgcolor" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="color">Color:</label>
+    </div>
+    <div class="col">
+      <input type="color" id="color" [(ngModel)]="color" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"><label for="format">Format:</label></div>
+    <div class="col">
+      <button
+        [class]="{
+          buttonClicked: this.format === 'jpeg',
+          button: true
+        }"
+        (click)="setFormat('jpeg')"
+      >
+        JPEG
+      </button>
+      <button
+        [class]="{
+          buttonClicked: this.format === 'png',
+          button: true
+        }"
+        (click)="setFormat('png')"
+      >
+        PNG
+      </button>
+      <button
+        [class]="{
+          buttonClicked: this.format === 'gif',
+          button: true
+        }"
+        (click)="setFormat('gif')"
+      >
+        GIF
+      </button>
+      <button
+        [class]="{
+          buttonClicked: this.format === 'svg',
+          button: true
+        }"
+        (click)="setFormat('svg')"
+      >
+        SVG
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <button class="generateButton" (click)="generateButton()">Generate!</button>
+    <button class="refreshButton" (click)="refreshButton()">Refresh!</button>
+    <button
+      class="downloadButton"
+      *ngIf="isGenerated && errorMessage === ''"
+      (click)="downloadQRCode()"
+    >
+      Download
+    </button>
+  </div>
 </div>
+<div class="errorMessage" *ngIf="this.errorMessage != ''">
+  {{ errorMessage }}
+</div>
+<div class="QRCode">
+  <img [src]="imageViewURL" />
+</div>
+<div *ngIf="this.message != ''" class="message">{{ message }}</div>
