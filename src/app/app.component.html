@@ -10,48 +10,39 @@
         placeholder="Enter your text here"
         [(ngModel)]="text"
       />
-      <div
-        (mouseover)="showInfo = true"
-        (mouseout)="showInfo = false"
-        class="info"
-      >
-        <span [hidden]="showInfo">i</span>
-        <span [hidden]="!showInfo">blablaballa</span>
-      </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col">
       <label for="size">Size:</label>
     </div>
     <div class="col">
       <button
-        class="{ buttonClicked: this.sizeAsText === '50', button: true }"
+        [class]="{ buttonClicked: this.sizeAsText === '50' }"
         (click)="setSize('50')"
       >
         50px
       </button>
       <button
-        class="{ buttonClicked: this.sizeAsText === '100', button: true }"
+        [class]="{ buttonClicked: this.sizeAsText === '100' }"
         (click)="setSize('100')"
       >
         100px
       </button>
       <button
-        class="{ buttonClicked: this.sizeAsText === '300', button: true }"
+        [class]="{ buttonClicked: this.sizeAsText === '300' }"
         (click)="setSize('300')"
       >
         300px
       </button>
       <button
-        class="{ buttonClicked: this.sizeAsText === '500', button: true }"
+        [class]="{ buttonClicked: this.sizeAsText === '500' }"
         (click)="setSize('500')"
       >
         500px
       </button>
       <button
-        [class]="{ buttonClicked: this.sizeAsText === '1000', button: true }"
+        [class]="{ buttonClicked: this.sizeAsText === '1000' }"
         (click)="setSize('1000')"
       >
         1000px
@@ -61,6 +52,7 @@
         id="size"
         placeholder="Customized size"
         size="15"
+        maxlength="4"
         [(ngModel)]="sizeAsText"
       />
     </div>
@@ -78,7 +70,7 @@
       <label for="color">Color:</label>
     </div>
     <div class="col">
-      <input type="color" id="color" [(ngModel)]="color" />
+      <input type="color" id="color" name="color" [(ngModel)]="color" />
     </div>
   </div>
   <div class="row">

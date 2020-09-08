@@ -10,12 +10,7 @@
   border: 1px black solid;
   width: 6px;
 }
-hide {
-  display: none;
-}
-show {
-  display: block;
-}
+
 .container {
   border: 1px solid gray;
   max-width: 450px;
@@ -53,9 +48,4 @@ show {
 
 .buttonClicked {
   background-color: lightgray;
-  margin: 2px;
-}
-
-.button {
-  margin: 2px;
 }
