@@ -4,6 +4,18 @@
   top: 43px;
   left: 47px;
 }
+
+.info {
+  float: right;
+  border: 1px black solid;
+  width: 6px;
+}
+hide {
+  display: none;
+}
+show {
+  display: block;
+}
 .container {
   border: 1px solid gray;
   max-width: 450px;
@@ -11,7 +23,7 @@
 }
 .row {
   display: flex;
-  max-width: 400px;
+  max-width: 410px;
   margin: 5px;
   padding: 10px;
 }

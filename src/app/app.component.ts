@@ -13,7 +13,7 @@ export class AppComponent {
   message: string = '';
   sizeAsText = '';
   generatedSizeAsText = '';
-  size: number = 0;
+  size: number = 50;
   text: string = '';
   generatedText: string = '';
   format: string = 'jpeg';
@@ -21,8 +21,11 @@ export class AppComponent {
   bgcolor: string = '';
   color: string = '';
   isGenerated: boolean = false;
+  showInfo: boolean;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.showInfo = false;
+  }
 
   setFormat(f: string) {
     this.format = f;
@@ -66,8 +69,8 @@ export class AppComponent {
     this.message = '';
     this.errorMessage = '';
     /*Format zum Attribute color in <input> ist mit #, in URL ohne*/
-    if (this.bgcolor != '') this.bgcolor = this.bgcolor.substring(1);
-    if (this.color != '') this.color = this.color.substring(1);
+    if (this.bgcolor.includes('#')) this.bgcolor = this.bgcolor.substring(1);
+    if (this.color.includes('#')) this.color = this.color.substring(1);
     if (this.text === '') this.errorMessage += 'Please enter the text. '; //falsche Eingabe: kein Text
     if (this.size < 50 || this.size > 1000 || isNaN(this.size))
       //falsche Eingabe: Größe falsch oder nicht im angegebenen Zahlenraum
@@ -135,7 +138,7 @@ export class AppComponent {
     this.generatedFormat = '';
     this.generatedSizeAsText = '';
     this.generatedText = '';
-    this.size = 0;
+    this.size = 50;
     this.text = '';
     this.format = 'jpeg';
     this.bgcolor = '';
